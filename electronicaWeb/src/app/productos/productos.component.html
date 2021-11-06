@@ -1,0 +1,26 @@
+<h2>Búsqueda de productos</h2>
+<input type="text" name="nombre" placeholder="Ingrese producto" [(ngModel)]="nombre">
+<button type="button" (click)="buscar()">Buscar <i class="fas fa-search"></i></button>
+
+<div class="container-full px-4">
+    <div class="grid grid-cols-4">
+        <article class="p-4" *ngFor="let item of lista; let indice = index">
+            <div class="flex flex-row-reverse">
+                <div class="text-white bg-red-500 hover:bg-red-700 cursor-pointer w-20 h-8 text-center rounded">
+                    Oferta
+                </div>
+            </div>            
+            <img [src]="item.urlImagen" class="h-80">
+            <h6 class="text-center text-sm text-gray-400">{{item.marca.nombre}}</h6>
+            <p class="text-center font-bold text-sm">{{item.nombre}}</p>
+            <div class="text-center text-lg">
+                <label class="mx-2 text-gray-400 line-through">${{item.precioRegular}}</label>
+                <label class="text-red-500 font-bold">${{item.precioOferta}}</label>
+            </div>  
+            <a class="text-white bg-red-500 hover:bg-red-700 cursor-pointer w-20 h-8 text-center rounded" (click)="agregarProducto(indice)">Agregar Producto</a>          
+        </article>
+    </div> 
+</div>
+
+
+<a class="text-white bg-red-500 hover:bg-red-900 cursor-pointer w-20 h-8 text-center rounded" (click)="verCarrito()">Ver carrito</a>          
